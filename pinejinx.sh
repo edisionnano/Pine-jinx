@@ -44,7 +44,7 @@ install () {
 	#Append any optimizations
 	sed -i "s/^Exec=/Exec=${arg}/" Ryujinx.desktop 
 	#Place desktop entry
-	cp Ryujinx.desktop ~/.local/share/applications
+	mkdir -p ~/.local/share/applications && cp Ryujinx.desktop ~/.local/share/applications
 	#Place icon
 	mkdir -p ~/.local/share/icons && cp Ryujinx.png ~/.local/share/icons
 	#Place mime entry
