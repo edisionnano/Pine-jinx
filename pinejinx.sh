@@ -73,11 +73,11 @@ printf "[1] Install it\n"
 printf "[2] Uninstall\n"
 printf "[3] Reinstall\n"
 read -p "Choose an option (or anything else to quit): " option
-if [ "$(option)" = "1" ]; then
+if [ "$option" = "1" ]; then
 	install
-elif [ "$(option)" = "2" ]; then
+elif [ "$option" = "2" ]; then
 	uninstall
-elif [ "$(option)" = "3" ]; then
+elif [ "$option" = "3" ]; then
 	uninstall
 	install
 else
