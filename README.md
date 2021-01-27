@@ -6,4 +6,4 @@ This installer does not create an alias since the way to do this is different fo
 The purpose of the installer is to place Ryujinx inside ~/.local/share/Ryujinx, setup a desktop entry with optional optimizations (per GPU vendor and/or gamemode) as well as setup mimetypes for Switch binaries (eg. NSP, XCI).
 
 Usage:
-`bash -c "$(curl https://raw.githubusercontent.com/edisionnano/Pine-jinx/main/pinejinx.sh)"`
+`bash -c "$(curl -s https://raw.githubusercontent.com/edisionnano/Pine-jinx/main/pinejinx.sh)"`
