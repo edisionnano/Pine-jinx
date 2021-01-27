@@ -20,10 +20,10 @@ install () {
 	curl -sLOC - "https://raw.githubusercontent.com/edisionnano/Pine-jinx/main/Ryujinx.desktop"
 	curl -sLOC - "https://raw.githubusercontent.com/edisionnano/Pine-jinx/main/Ryujinx.png"
 	curl -sLOC - "https://raw.githubusercontent.com/edisionnano/Pine-jinx/main/Ryujinx.xml"
-	if ! command -v gamemoderun & > /dev/null
-	then
-		printf "Warning:Gamemode not found!\nIf you want to use it you'll have to install it.\nGamemode is a tool that improves performance on non custom kernels.\n"
+	if ! [ "$(command -v gamemoderun)" ];then
+		printf "Warning:Gamemode not found!\nIf you want to use it you'll have to install it.\n"
 	fi
+	printf "Gamemode is a tool that improves performance on non custom kernels.\n"
 	read -p "Do you want to use it? [y/N]: " gamemode
 	if [ "$gamemode" = "y" ] || [ "$gamemode" = "Y" ]; then
 		arg1="gamemoderun "
@@ -73,11 +73,11 @@ printf "[1] Install it\n"
 printf "[2] Uninstall\n"
 printf "[3] Reinstall\n"
 read -p "Choose an option (or anything else to quit): " option
-if [ "$option" = "1" ]; then
+if [ "$(option)" = "1" ]; then
 	install
-elif [ "$option" = "2" ]; then
+elif [ "$(option)" = "2" ]; then
 	uninstall
-elif [ "$option" = "3" ]; then
+elif [ "$(option)" = "3" ]; then
 	uninstall
 	install
 else
