@@ -32,7 +32,7 @@ install () {
 	fi
 	read -p "Optimize Ryujinx for 1)Nvidia 2)Intel and AMD 3)None: " gpuopt
 	if [ "$gpuopt" = "1" ]; then
-		arg2='env __GL_THREADED_OPTIMIZATION=1 __GL_SYNC_TO_VBLANK=0 '
+		arg2='env __GL_THREADED_OPTIMIZATIONS=1 __GL_SYNC_TO_VBLANK=0 '
 	elif [ "$gpuopt" = "2" ]; then
 		arg2='env glsl_zero_init=true mesa_glthread=true vblank_mode=0 MESA_EXTENSION_OVERRIDE="-GL_KHR_texture_compression_astc_ldr -GL_KHR_texture_compression_astc_sliced_3d" '
 	else
