@@ -66,7 +66,7 @@ install () {
 	if [ "$gpuopt" = "1" ]; then
 		arg2='env __GL_THREADED_OPTIMIZATIONS=1 __GL_SYNC_TO_VBLANK=0 '
 	elif [ "$gpuopt" = "2" ]; then
-		arg2="env AMD_DEBUG=w32ge,w32ps,w32cs R600_DEBUG=nohyperz glsl_zero_init=true radeonsi_clamp_div_by_zero=true mesa_glthread=true vblank_mode=0 MESA_EXTENSION_OVERRIDE='-GL_KHR_texture_compression_astc_ldr -GL_KHR_texture_compression_astc_sliced_3d' "
+		arg2="env AMD_DEBUG=w32ge,w32ps,w32cs R600_DEBUG=nohyperz glsl_zero_init=true radeonsi_clamp_div_by_zero=true mesa_glthread=true vblank_mode=0 "
 		printf "MESA_NO_ERROR can give performance boosts in games like Monster Hunter Rise and Animal Crossing but potentially break others like Splaton 2\n"
 		read -p "Do you want to use it? [y/N]: " mesanoerror
 		if [ "$mesanoerror" = "y" ] || [ "$mesanoerror" = "Y" ]; then
