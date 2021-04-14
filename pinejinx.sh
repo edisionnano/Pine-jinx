@@ -4,7 +4,7 @@ find /tmp/pineapple/* ! -name '*.tar.gz' 2>/dev/null | sort -n -r | xargs rm -rf
 mkdir -p /tmp/pineapple && cd /tmp/pineapple
 #Define the functions
 makealias() {
-    ryualias='alias ryujinx="'$arg' GDK_BACKEND=x11 /home/'${USER}'/.local/share/Ryujinx/Ryujinx"'
+    ryualias='alias ryuldn="'$arg' GDK_BACKEND=x11 /home/'${USER}'/.local/share/Ryujinx_LDN/Ryujinx"'
     if [ -z "${SHELL##*zsh*}" ]; then
         printf "Detected shell: ZSH\n"
         FILE="/home/${USER}/.zshrc"
@@ -16,13 +16,13 @@ makealias() {
         return 1
     fi
     if [ -f $FILE ]; then
-        sed -i '/alias ryujinx/d' $FILE
+        sed -i '/alias ryuldn/d' $FILE
         echo $ryualias >> $FILE
     else 
         printf "$FILE does not exist, creating new file..."
         echo $ryualias > $FILE
     fi
-    printf "Alias created successfully, use the command ryujinx the next time you open your terminal.\n"
+    printf "Alias created successfully, use the command ryuldn the next time you open your terminal.\n"
 }
 removealias() {
     if [ -z "${SHELL##*zsh*}" ]; then
@@ -32,25 +32,24 @@ removealias() {
     else
         return 1
     fi
-    sed -i '/alias ryujinx/d' $FILE
+    sed -i '/alias ryuldn/d' $FILE
 }
 install () {
-	jobid=$(curl -s https://ci.appveyor.com/api/projects/gdkchan/ryujinx/branch/master | grep -Po '"jobId":.*?[^\\]",' |sed  's/"jobId":"\(.*\)",/\1/' )
 	printf "Downloading $version...\n"
-	curl -LOC - "https://ci.appveyor.com/api/buildjobs/${jobid}/artifacts/ryujinx-${version}-linux_x64.tar.gz"
-	tar -xf ryujinx-${version}-linux_x64.tar.gz
-	arch_dir=$(tar --exclude='*/*' -tf ryujinx-${version}-linux_x64.tar.gz)
+	curl "https://c10.patreonusercontent.com/3/eyJhIjoxLCJwIjoxfQ%3D%3D/patreon-media/p/post/45268370/392abc1b269549f4a8fcdc54767a4db8/1?token-time=1618665277&token-hash=m9I42ycNt2x8mO8V7XoZuq3yG7EXQtR6XSlfu05Bhys%3D" > ryujinx-1.0.0-ldn2.2-linux_x64.tar.gz
+	tar -xf ryujinx-1.0.0-ldn2.2-linux_x64.tar.gz
+	arch_dir=$(tar --exclude='*/*' -tf ryujinx-1.0.0-ldn2.2-linux_x64.tar.gz)
 	if [ -d "$arch_dir" ]; then
 		printf "Extraction successful!\n"
-		mkdir -p /home/${USER}/.local/share/Ryujinx
-		cp -a $arch_dir/. /home/${USER}/.local/share/Ryujinx
+		mkdir -p /home/${USER}/.local/share/Ryujinx_LDN
+		cp -a $arch_dir/. /home/${USER}/.local/share/Ryujinx_LDN
 	else
 		printf "Extraction failed!\nAborting...\n"
 		exit
 	fi
-	curl -sLOC - "https://raw.githubusercontent.com/edisionnano/Pine-jinx/main/Ryujinx.desktop"
-	curl -sLOC - "https://raw.githubusercontent.com/edisionnano/Pine-jinx/main/Ryujinx.png"
-	curl -sLOC - "https://raw.githubusercontent.com/edisionnano/Pine-jinx/main/Ryujinx.xml"
+	curl -sLOC - "https://raw.githubusercontent.com/edisionnano/Pine-jinx/LDN/Ryujinx_LDN.desktop"
+	curl -sLOC - "https://raw.githubusercontent.com/edisionnano/Pine-jinx/LDN/Ryujinx_LDN.png"
+	curl -sLOC - "https://raw.githubusercontent.com/edisionnano/Pine-jinx/LDN/Ryujinx_LDN.xml"
 	if ! [ "$(command -v gamemoderun)" ]; then
 		printf "Warning:Gamemode not found!\nIf you want to use it you'll have to install it.\n"
 		printf "\e[91m$(tput bold)This means that if you choose Y you will have to install it manually yourself (sudo pacman -Syu gamemode on arch)!\e[0m\n"
@@ -62,7 +61,7 @@ install () {
 	else
 		arg1=""
 	fi
-	read -p "Optimize Ryujinx for 1)Nvidia 2)Intel and AMD 3)None: " gpuopt
+	read -p "Optimize Ryujinx LDN for 1)Nvidia 2)Intel and AMD 3)None: " gpuopt
 	if [ "$gpuopt" = "1" ]; then
 		arg2='env __GL_THREADED_OPTIMIZATIONS=1 __GL_SYNC_TO_VBLANK=0 '
 	elif [ "$gpuopt" = "2" ]; then
@@ -79,43 +78,44 @@ install () {
 	fi
 	arg="$arg2$arg3$arg1"
 	#Desktop entries do not accept relative paths so the user's name must be in the file
-	sed -i "s/dummy/${USER}/g" Ryujinx.desktop
+	sed -i "s/dummy/${USER}/g" Ryujinx_LDN.desktop
 	#Append any optimizations
-	sed -i "s/^Exec=/Exec=${arg}/" Ryujinx.desktop 
+	sed -i "s/^Exec=/Exec=${arg}/" Ryujinx_LDN.desktop 
 	#Place desktop entry
-	mkdir -p /home/${USER}/.local/share/applications && cp Ryujinx.desktop /home/${USER}/.local/share/applications
+	mkdir -p /home/${USER}/.local/share/applications && cp Ryujinx_LDN.desktop /home/${USER}/.local/share/applications
 	#Place icon
-	mkdir -p /home/${USER}/.local/share/icons && cp Ryujinx.png /home/${USER}/.local/share/icons
+	mkdir -p /home/${USER}/.local/share/icons && cp Ryujinx_LDN.png /home/${USER}/.local/share/icons
 	#Place mime entry
-	mkdir -p /home/${USER}/.local/share/mime/packages && cp Ryujinx.xml /home/${USER}/.local/share/mime/packages
+	mkdir -p /home/${USER}/.local/share/mime/packages && cp Ryujinx_LDN.xml /home/${USER}/.local/share/mime/packages
+	#Set the rights
+	chmod +x /home/${USER}/.local/share/Ryujinx_LDN/Ryujinx
 	#Update the MIME database
 	update-mime-database /home/${USER}/.local/share/mime
 	#Update the application database
 	update-desktop-database /home/${USER}/.local/share/applications
-	read -p "Do you want PineJinx to setup an alias for ryujinx? [y/N]: " alias
+	read -p "Do you want PineJinx to setup an alias for Ryujinx LDN? [y/N]: " alias
 	if [ "$alias" = "y" ] || [ "$alias" = "Y" ]; then
 		makealias
 	else
 		:
 	fi
 	printf "Installation successful, launch Ryujinx from your app launcher.\n"
+	printf "Also don't forget to show your love on Patreon at https://www.patreon.com/ryujinx\n"
 }
 uninstall () {
 	printf "Uninstalling..."
-	rm -rf /home/${USER}/.local/share/Ryujinx
-	rm -rf /home/${USER}/.local/share/mime/packages/Ryujinx.xml
-	rm -rf /home/${USER}/.local/share/applications/Ryujinx.desktop
-	rm -rf /home/${USER}/.local/share/icons/Ryujinx.png
+	rm -rf /home/${USER}/.local/share/Ryujinx_LDN
+	rm -rf /home/${USER}/.local/share/mime/packages/Ryujinx_LDN.xml
+	rm -rf /home/${USER}/.local/share/applications/Ryujinx_LDN.desktop
+	rm -rf /home/${USER}/.local/share/icons/Ryujinx_LDN.png
 	update-mime-database /home/${USER}/.local/share/mime
 	update-desktop-database /home/${USER}/.local/share/applications
 	printf "\nUninstallation successful!\n"
 	removealias
 	
 }
-printf "Welcome to PinEApple-Ryujinx\n"
-printf "Fetching latest version info from the slow AppVeyor api...\n"
-version=$(curl -s https://ci.appveyor.com/api/projects/gdkchan/ryujinx/branch/master | grep -Po '"version":.*?[^\\]",' | sed  's/"version":"\(.*\)",/\1/')
-printf "Latest version is: $version\n"
+printf "Welcome to PinEApple-Ryujinx LDN\n"
+printf "Latest LDN version is: 2.2\n"
 printf "[1] Install it\n"
 printf "[2] Uninstall\n"
 printf "[3] Reinstall\Repair\n"
