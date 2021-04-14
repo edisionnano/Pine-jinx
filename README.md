@@ -8,7 +8,7 @@ The purpose of the installer is to place Ryujinx inside ~/.local/share/Ryujinx, 
 Usage:
 `bash -c "$(curl -s https://raw.githubusercontent.com/edisionnano/Pine-jinx/main/pinejinx.sh)"`
 
-##Note
+## Note
 This installs the latest master build, to get LDN use</br>
 `bash -c "$(curl -s https://raw.githubusercontent.com/edisionnano/Pine-jinx/LDN/pinejinx.sh)"`
 </br>LDN is installed at a different location so that you can have both together at the same time.
