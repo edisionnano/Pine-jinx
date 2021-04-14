@@ -88,6 +88,8 @@ install () {
 	mkdir -p /home/${USER}/.local/share/icons && cp Ryujinx.png /home/${USER}/.local/share/icons
 	#Place mime entry
 	mkdir -p /home/${USER}/.local/share/mime/packages && cp Ryujinx.xml /home/${USER}/.local/share/mime/packages
+	#Set the rights
+	chmod +x /home/${USER}/.local/share/Ryujinx/Ryujinx
 	#Update the MIME database
 	update-mime-database /home/${USER}/.local/share/mime
 	#Update the application database
@@ -99,6 +101,7 @@ install () {
 		:
 	fi
 	printf "Installation successful, launch Ryujinx from your app launcher.\n"
+	printf "Also don't forget to show your love on Patreon at https://www.patreon.com/ryujinx\n"
 }
 uninstall () {
 	printf "Uninstalling..."
