@@ -36,7 +36,7 @@ removealias() {
 }
 install () {
 	printf "Downloading $version...\n"
-	curl "https://c10.patreonusercontent.com/3/eyJhIjoxLCJwIjoxfQ%3D%3D/patreon-media/p/post/45268370/392abc1b269549f4a8fcdc54767a4db8/1?token-time=1618665277&token-hash=m9I42ycNt2x8mO8V7XoZuq3yG7EXQtR6XSlfu05Bhys%3D" > ryujinx-1.0.0-ldn2.2-linux_x64.tar.gz
+	curl -L "https://www.patreon.com/file?h=45268370&i=7775869" > ryujinx-1.0.0-ldn2.2-linux_x64.tar.gz
 	tar -xf ryujinx-1.0.0-ldn2.2-linux_x64.tar.gz
 	arch_dir=$(tar --exclude='*/*' -tf ryujinx-1.0.0-ldn2.2-linux_x64.tar.gz)
 	if [ -d "$arch_dir" ]; then
