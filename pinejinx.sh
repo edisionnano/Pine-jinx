@@ -47,9 +47,9 @@ install () {
 		printf "Extraction failed!\nAborting...\n"
 		exit
 	fi
-	curl -sLOC - "https://raw.githubusercontent.com/edisionnano/Pine-jinx/LDN/Ryujinx_LDN.desktop"
-	curl -sLOC - "https://raw.githubusercontent.com/edisionnano/Pine-jinx/LDN/Ryujinx_LDN.png"
-	curl -sLOC - "https://raw.githubusercontent.com/edisionnano/Pine-jinx/LDN/Ryujinx_LDN.xml"
+	curl -L "https://raw.githubusercontent.com/edisionnano/Pine-jinx/LDN/Ryujinx_LDN.desktop" > Ryujinx_LDN.desktop
+	curl -L "https://raw.githubusercontent.com/edisionnano/Pine-jinx/LDN/Ryujinx_LDN.png" > Ryujinx_LDN.png
+	curl -L "https://raw.githubusercontent.com/edisionnano/Pine-jinx/LDN/Ryujinx_LDN.xml" > Ryujinx_LDN.xml
 	if ! [ "$(command -v gamemoderun)" ]; then
 		printf "Warning:Gamemode not found!\nIf you want to use it you'll have to install it.\n"
 		printf "\e[91m$(tput bold)This means that if you choose Y you will have to install it manually yourself (sudo pacman -Syu gamemode on arch)!\e[0m\n"
