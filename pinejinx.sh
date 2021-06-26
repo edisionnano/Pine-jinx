@@ -37,7 +37,7 @@ removealias() {
 install () {
 	jobid=$(curl -s https://ci.appveyor.com/api/projects/gdkchan/ryujinx/branch/master | grep -Po '"jobId":.*?[^\\]",' |sed  's/"jobId":"\(.*\)",/\1/' )
 	printf "Downloading $version...\n"
-	curl -LOC - "https://ci.appveyor.com/api/buildjobs/${jobid}/artifacts/ryujinx-${version}-linux_x64.tar.gz"
+	curl -L "https://ci.appveyor.com/api/buildjobs/${jobid}/artifacts/ryujinx-${version}-linux_x64.tar.gz" > ryujinx-${version}-linux_x64.tar.gz
 	tar -xf ryujinx-${version}-linux_x64.tar.gz
 	arch_dir=$(tar --exclude='*/*' -tf ryujinx-${version}-linux_x64.tar.gz)
 	if [ -d "$arch_dir" ]; then
@@ -48,9 +48,9 @@ install () {
 		printf "Extraction failed!\nAborting...\n"
 		exit
 	fi
-	curl -sLOC - "https://raw.githubusercontent.com/edisionnano/Pine-jinx/main/Ryujinx.desktop"
-	curl -sLOC - "https://raw.githubusercontent.com/edisionnano/Pine-jinx/main/Ryujinx.png"
-	curl -sLOC - "https://raw.githubusercontent.com/edisionnano/Pine-jinx/main/Ryujinx.xml"
+	curl -L "https://raw.githubusercontent.com/edisionnano/Pine-jinx/main/Ryujinx.desktop" > Ryujinx.desktop
+	curl -L "https://raw.githubusercontent.com/edisionnano/Pine-jinx/main/Ryujinx.png" > Ryujinx.png
+	curl -L "https://raw.githubusercontent.com/edisionnano/Pine-jinx/main/Ryujinx.xml" > Ryujinx.xml
 	if ! [ "$(command -v gamemoderun)" ]; then
 		printf "Warning:Gamemode not found!\nIf you want to use it you'll have to install it.\n"
 		printf "\e[91m$(tput bold)This means that if you choose Y you will have to install it manually yourself (sudo pacman -Syu gamemode on arch)!\e[0m\n"
