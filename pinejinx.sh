@@ -18,7 +18,7 @@ makealias() {
     if [ -f $FILE ]; then
         sed -i '/alias ryuldn/d' $FILE
         echo $ryualias >> $FILE
-    else 
+    else
         printf "$FILE does not exist, creating new file..."
         echo $ryualias > $FILE
     fi
@@ -36,9 +36,9 @@ removealias() {
 }
 install () {
 	printf "Downloading $version...\n"
-	curl -L "https://www.patreon.com/file?h=45268370&i=8096203" > ryujinx-1.0.0-ldn2.3-linux_x64.tar.gz
-	tar -xf ryujinx-1.0.0-ldn2.3-linux_x64.tar.gz
-	arch_dir=$(tar --exclude='*/*' -tf ryujinx-1.0.0-ldn2.3-linux_x64.tar.gz)
+	curl -L "https://www.patreon.com/file?h=45268370&i=9248979" > ryujinx-1.0.0-ldn2.4-linux_x64.tar.gz
+	tar -xf ryujinx-1.0.0-ldn2.4-linux_x64.tar.gz
+	arch_dir=$(tar --exclude='*/*' -tf ryujinx-1.0.0-ldn2.4-linux_x64.tar.gz)
 	if [ -d "$arch_dir" ]; then
 		printf "Extraction successful!\n"
 		mkdir -p /home/${USER}/.local/share/Ryujinx_LDN
@@ -80,7 +80,7 @@ install () {
 	#Desktop entries do not accept relative paths so the user's name must be in the file
 	sed -i "s/dummy/${USER}/g" Ryujinx_LDN.desktop
 	#Append any optimizations
-	sed -i "s/^Exec=/Exec=${arg}/" Ryujinx_LDN.desktop 
+	sed -i "s/^Exec=/Exec=${arg}/" Ryujinx_LDN.desktop
 	#Place desktop entry
 	mkdir -p /home/${USER}/.local/share/applications && cp Ryujinx_LDN.desktop /home/${USER}/.local/share/applications
 	#Place icon
@@ -112,10 +112,10 @@ uninstall () {
 	update-desktop-database /home/${USER}/.local/share/applications
 	printf "\nUninstallation successful!\n"
 	removealias
-	
+
 }
 printf "Welcome to PinEApple-Ryujinx LDN\n"
-printf "Latest LDN version is: 2.3\n"
+printf "Latest LDN version is: 2.4\n"
 printf "[1] Install it\n"
 printf "[2] Uninstall\n"
 printf "[3] Reinstall\Repair\n"
@@ -131,3 +131,4 @@ else
 	:
 fi
 exit
+
