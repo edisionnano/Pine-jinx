@@ -98,4 +98,3 @@ install () {
 		makealias
 	else
 		:
-...
