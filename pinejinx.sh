@@ -98,3 +98,38 @@ install () {
 		makealias
 	else
 		:
+	fi
+	printf "Installation successful, launch Ryujinx from your app launcher.\n"
+	printf "Also don't forget to show your love on Patreon at https://www.patreon.com/ryujinx\n"
+}
+uninstall () {
+	printf "Uninstalling..."
+	rm -rf /home/${USER}/.local/share/Ryujinx_LDN
+	rm -rf /home/${USER}/.local/share/mime/packages/Ryujinx_LDN.xml
+	rm -rf /home/${USER}/.local/share/applications/Ryujinx_LDN.desktop
+	rm -rf /home/${USER}/.local/share/icons/Ryujinx_LDN.png
+	update-mime-database /home/${USER}/.local/share/mime
+	update-desktop-database /home/${USER}/.local/share/applications
+	printf "\nUninstallation successful!\n"
+	removealias
+
+}
+printf "Welcome to PinEApple-Ryujinx LDN\n"
+printf "Latest LDN version is: 2.4\n"
+printf "[1] Install it\n"
+printf "[2] Uninstall\n"
+printf "[3] Reinstall\Repair\n"
+read -p "Choose an option (or anything else to quit): " option
+if [ "$option" = "1" ]; then
+	install
+elif [ "$option" = "2" ]; then
+	uninstall
+elif [ "$option" = "3" ]; then
+	uninstall
+	install
+else
+	:
+fi
+exit
+
+
