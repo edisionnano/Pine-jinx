@@ -77,6 +77,10 @@ install () {
 		arg2=''
 	fi
 	arg="$arg2$arg3$arg1"
+	read -p "Do you want to disable the console window? [y/N]: " console
+	if [ "$console" = "y" ] || [ "$console" = "Y" ]; then
+		sed -i "s/Terminal=true/Terminal=false/g" Ryujinx.desktop
+	fi
 	#Desktop entries do not accept relative paths so the user's name must be in the file
 	sed -i "s/dummy/${USER}/g" Ryujinx_LDN.desktop
 	#Append any optimizations
