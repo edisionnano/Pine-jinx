@@ -77,11 +77,15 @@ install () {
 	else
 		arg2=''
 	fi
+	read -p "Do you want to disable the console window? [y/N]: " console
+	if [ "$console" = "y" ] || [ "$console" = "Y" ]; then
+		sed -i "s/Terminal=true/Terminal=false/g" Ryujinx.desktop
+	fi
 	arg="$arg2$arg3$arg1"
 	#Desktop entries do not accept relative paths so the user's name must be in the file
 	sed -i "s/dummy/${USER}/g" Ryujinx.desktop
 	#Append any optimizations
-	sed -i "s/^Exec=/Exec=${arg}/" Ryujinx.desktop 
+	sed -i "s/^Exec=/Exec=${arg}/" Ryujinx.desktop
 	#Place desktop entry
 	mkdir -p /home/${USER}/.local/share/applications && cp Ryujinx.desktop /home/${USER}/.local/share/applications
 	#Place icon
@@ -113,7 +117,6 @@ uninstall () {
 	update-desktop-database /home/${USER}/.local/share/applications
 	printf "\nUninstallation successful!\n"
 	removealias
-	
 }
 printf "Welcome to PinEApple-Ryujinx\n"
 printf "Fetching latest version info from the slow AppVeyor api...\n"
