@@ -72,7 +72,7 @@ install() {
 	fi
 	if [ "$gamemode" = "y" ] || [ "$gamemode" = "Y" ]; then
 		arg1="gamemoderun "
-		curl -s -L "https://raw.githubusercontent.com/edisionnano/Pine-jinx/main/gamemode.ini" > /home/${USER}/.config/gamemode.ini
+		#curl -s -L "https://raw.githubusercontent.com/edisionnano/Pine-jinx/main/gamemode.ini" > /home/${USER}/.config/gamemode.ini
 	else
 		arg1=""
 	fi
@@ -122,7 +122,7 @@ uninstall() {
 	rm -rf /home/${USER}/.local/share/mime/packages/Ryujinx.xml
 	rm -rf /home/${USER}/.local/share/applications/Ryujinx.desktop
 	rm -rf /home/${USER}/.local/share/icons/Ryujinx.png
-	rm -rf /home/${USER}/.config/gamemode.ini
+	#rm -rf /home/${USER}/.config/gamemode.ini
 	update-mime-database /home/${USER}/.local/share/mime
 	update-desktop-database /home/${USER}/.local/share/applications
 	printf "\nUninstallation successful!\n"
