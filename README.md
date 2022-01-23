@@ -1,5 +1,4 @@
 **WARNING:If you are on Ubuntu or an Ubuntu-based distribution you'll need to do `sudo apt install libx11-dev` before using Pine-jinx!**
-
 # Pine-jinx
 <img align="left" alt="Frogjinx" width="22px" src="https://cdn.discordapp.com/attachments/780529926520438854/802958006282092624/FrogRyujinx.svg" />A local Ryujinx installer for linux
 
