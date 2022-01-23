@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 # Prepare environment
-find /tmp/pineapple/* 2>/dev/null | sort -n -r | xargs rm -rf --
+rm -rf /tmp/pineapple
 mkdir -p /tmp/pineapple && cd /tmp/pineapple
 #Define the functions
 getoptions() {
