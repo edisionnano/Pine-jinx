@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 # Prepare environment
-find /tmp/pineapple/* ! -name '*.tar.gz' 2>/dev/null | sort -n -r | xargs rm -rf --
+find /tmp/pineapple/* 2>/dev/null | sort -n -r | xargs rm -rf --
 mkdir -p /tmp/pineapple && cd /tmp/pineapple
 #Define the functions
 getoptions() {
