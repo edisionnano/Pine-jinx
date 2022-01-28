@@ -11,7 +11,7 @@ Open a terminal, paste <br>
 and hit enter
 
 ## Notes and Warnings
-⚠️ **If you are on Ubuntu or a based distro (like Mint,Elementary,Zorin,Pop_OS) you'll have to install libx11-dev using `sudo apt install libx11-dev` otherwise Ryujinx will fail to run<br>**
+⚠️ **If you are on Ubuntu or a based distro (like Mint,Elementary,Zorin,Pop_OS) you'll have to install libx11-dev using `sudo apt install libx11-dev` and if you are on Fedora `sudo dnf install libX11-devel` otherwise Ryujinx will fail to run**<br>
 ⚠️ If you choose to use gamemode you'll have to install it otherwise Ryujinx won't open. Pinejinx prints a warning in bright red bold letters when gamemode is not found. It's preinstalled on Ubuntu. To install it on Arch and based distros (like Manjaro,EndeavourOS and Garuda) do `sudo pacman -Syu gamemode` and for distros on the Debian/Ubuntu family (this includes MX,Mint,Elementary,Zorin,Pop_OS) use `sudo apt install gamemode`<br>
 ⚠️ If you are on Garuda you'll have to do `exec zsh` before using the script and the alias<br>
 ⚠️ Pinejinx overwrites ~/.config/gamemode.ini if it exists when you use gamemode. This will be fixed in the future. If you don't know what this is, ignore this warning<br>
