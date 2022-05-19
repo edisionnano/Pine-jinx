@@ -142,6 +142,7 @@ else
 	printf "[2] Uninstall\n"
 	printf "[3] Reinstall\Repair\n"
 	printf "[4] LDN version\n"
+	printf "[5] Flatpak version\n"
 	read -p "Choose an option (or anything else to quit): " option
 fi
 if [ "$option" = "1" ]; then
@@ -153,6 +154,8 @@ elif [ "$option" = "3" ]; then
 	install
 elif [ "$option" = "4" ]; then
 	bash -c "$(curl -s https://raw.githubusercontent.com/edisionnano/Pine-jinx/LDN/pinejinx.sh)"
+elif [ "$option" = "5"]; then
+	bash -c "$(curl -s https://raw.githubusercontent.com/Piplup55/Pine-jinx/Flatpak/pinejinx.sh)"
 else
 	:
 fi
