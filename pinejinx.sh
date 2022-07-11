@@ -19,7 +19,7 @@ getoptions() {
 	read -p "Do you want PineJinx to setup an alias for ryujinx? [y/N]: " alias
 }
 makealias() {
-    ryualias='alias ryujinx="'$arg' GDK_BACKEND=x11 /home/'${USER}'/.local/share/Ryujinx/Ryujinx"'
+    ryualias='alias ryujinx="'$arg' COMPlus_EnableAlternateStackCheck=1 GDK_BACKEND=x11 /home/'${USER}'/.local/share/Ryujinx/Ryujinx"'
     if [ -z "${SHELL##*zsh*}" ]; then
         printf "Detected shell: ZSH\n"
         FILE="/home/${USER}/.zshrc"
