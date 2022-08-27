@@ -4,7 +4,7 @@ find /tmp/pineapple/* ! -name '*.tar.gz' 2>/dev/null | sort -n -r | xargs rm -rf
 mkdir -p /tmp/pineapple && cd /tmp/pineapple
 #Define the functions
 makealias() {
-    ryualias='alias ryuldn="'$arg' GDK_BACKEND=x11 /home/'${USER}'/.local/share/Ryujinx_LDN/Ryujinx"'
+    ryualias='alias ryuldn="'$arg' COMPlus_EnableAlternateStackCheck=1 GDK_BACKEND=x11 /home/'${USER}'/.local/share/Ryujinx_LDN/Ryujinx"'
     if [ -z "${SHELL##*zsh*}" ]; then
         printf "Detected shell: ZSH\n"
         FILE="/home/${USER}/.zshrc"
@@ -37,12 +37,12 @@ removealias() {
 install () {
 	printf "Downloading $version...\n"
 	curl -L "https://www.patreon.com/file?h=70757628&i=11545814" > ryujinx-1.0.0-ldn2.5-linux_x64.tar.gz
-	tar -xf ryujinx-1.0.0-ldn2.5-linux_x64.tar.gz
-	arch_dir=$(tar --exclude='*/*' -tf ryujinx-1.0.0-ldn2.5-linux_x64.tar.gz)
-	if [ -d "$arch_dir" ]; then
+	mkdir publish
+	tar -xf ryujinx-1.0.0-ldn2.5-linux_x64.tar.gz -C publish
+	if [ -f "/tmp/pineapple/publish/Ryujinx" ]; then
 		printf "Extraction successful!\n"
 		mkdir -p /home/${USER}/.local/share/Ryujinx_LDN
-		cp -a $arch_dir/. /home/${USER}/.local/share/Ryujinx_LDN
+		cp -a publish/. /home/${USER}/.local/share/Ryujinx_LDN
 	else
 		printf "Extraction failed!\nAborting...\n"
 		exit
@@ -65,11 +65,11 @@ install () {
 	if [ "$gpuopt" = "1" ]; then
 		arg2='env __GL_THREADED_OPTIMIZATIONS=1 __GL_SYNC_TO_VBLANK=0 '
 	elif [ "$gpuopt" = "2" ]; then
-		arg2="env AMD_DEBUG=w32ge,w32ps,w32cs R600_DEBUG=nohyperz glsl_zero_init=true radeonsi_clamp_div_by_zero=true mesa_glthread=true vblank_mode=0 "
-		printf "MESA_NO_ERROR can give performance boosts in games like Monster Hunter Rise and Animal Crossing but potentially break others like Splaton 2\n"
+		arg2="env RADV_PERFTEST=bolist AMD_DEBUG=w32ge,w32ps,w32cs R600_DEBUG=nohyperz glsl_zero_init=true radeonsi_clamp_div_by_zero=true mesa_glthread=true vblank_mode=0 "
+		printf "MESA_NO_ERROR can give performance boosts in games like Monster Hunter Rise and Animal Crossing but potentially break others\n"
 		read -p "Do you want to use it? [y/N]: " mesanoerror
 		if [ "$mesanoerror" = "y" ] || [ "$mesanoerror" = "Y" ]; then
-            arg3="MESA_NO_ERROR=1 "
+		arg3="MESA_NO_ERROR=1 "
         else
             arg3=""
         fi
@@ -79,7 +79,7 @@ install () {
 	arg="$arg2$arg3$arg1"
 	read -p "Do you want to disable the console window? [y/N]: " console
 	if [ "$console" = "y" ] || [ "$console" = "Y" ]; then
-		sed -i "s/Terminal=true/Terminal=false/g" Ryujinx.desktop
+		sed -i "s/Terminal=true/Terminal=false/g" Ryujinx_LDN.desktop
 	fi
 	#Desktop entries do not accept relative paths so the user's name must be in the file
 	sed -i "s/dummy/${USER}/g" Ryujinx_LDN.desktop
