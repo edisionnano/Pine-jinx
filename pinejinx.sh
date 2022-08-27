@@ -63,9 +63,9 @@ install () {
 	fi
 	read -p "Optimize Ryujinx LDN for 1)Nvidia 2)Intel and AMD 3)None: " gpuopt
 	if [ "$gpuopt" = "1" ]; then
-		arg2='env __GL_THREADED_OPTIMIZATIONS=1 __GL_SYNC_TO_VBLANK=0 '
+		arg2='env __GL_THREADED_OPTIMIZATIONS=0 __GL_SYNC_TO_VBLANK=0 '
 	elif [ "$gpuopt" = "2" ]; then
-		arg2="env RADV_PERFTEST=bolist AMD_DEBUG=w32ge,w32ps,w32cs R600_DEBUG=nohyperz glsl_zero_init=true radeonsi_clamp_div_by_zero=true mesa_glthread=true vblank_mode=0 "
+		arg2="env RADV_PERFTEST=bolist AMD_DEBUG=w32ge,w32ps,w32cs R600_DEBUG=nohyperz glsl_zero_init=true radeonsi_clamp_div_by_zero=true mesa_glthread=false vblank_mode=0 "
 		printf "MESA_NO_ERROR can give performance boosts in games like Monster Hunter Rise and Animal Crossing but potentially break others\n"
 		read -p "Do you want to use it? [y/N]: " mesanoerror
 		if [ "$mesanoerror" = "y" ] || [ "$mesanoerror" = "Y" ]; then
