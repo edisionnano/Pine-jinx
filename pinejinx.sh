@@ -155,7 +155,7 @@ elif [ "$option" = "3" ]; then
 elif [ "$option" = "4" ]; then
 	bash -c "$(curl -s https://raw.githubusercontent.com/edisionnano/Pine-jinx/LDN/pinejinx.sh)"
 elif [ "$option" = "5"]; then
-	bash -c "$(curl -s https://raw.githubusercontent.com/Piplup55/Pine-jinx/Flatpak/pinejinx.sh)"
+	bash -c "$(curl -s https://raw.githubusercontent.com/edisionnano/Pine-jinx/Flatpak/pinejinx.sh)"
 else
 	:
 fi
