@@ -77,9 +77,9 @@ install() {
 		arg1=""
 	fi
 	if [ "$gpuopt" = "1" ]; then
-		arg2='__GL_THREADED_OPTIMIZATIONS=0 __GL_SYNC_TO_VBLANK=0 '
+		arg2="__GL_THREADED_OPTIMIZATIONS=0 __GL_SYNC_TO_VBLANK=0 "
 	elif [ "$gpuopt" = "2" ]; then
-		arg2="AMD_DEBUG=w32ge,w32cs,nohyperz,nofmask glsl_zero_init=true radeonsi_clamp_div_by_zero=true force_integer_tex_nearest=true mesa_glthread=false vblank_mode=0 RADV_PERFTEST=bolist"
+		arg2="AMD_DEBUG=w32ge,w32cs,nohyperz,nofmask glsl_zero_init=true radeonsi_clamp_div_by_zero=true force_integer_tex_nearest=true mesa_glthread=false vblank_mode=0 RADV_PERFTEST=bolist "
 		if [ "$mesanoerror" = "y" ] || [ "$mesanoerror" = "Y" ]; then
             arg3="MESA_NO_ERROR=1 "
         else
