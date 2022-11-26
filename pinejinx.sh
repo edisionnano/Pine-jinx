@@ -36,9 +36,9 @@ removealias() {
 }
 install () {
 	printf "Downloading $version...\n"
-	curl -L "https://www.patreon.com/file?h=70757628&i=11545814" > ryujinx-1.0.0-ldn2.5-linux_x64.tar.gz
+	curl -L "https://www.patreon.com/file?h=74910544&i=12353055" > ryujinx-1.1.0-ldn3.0.1-linux_x64.tar.gz
 	mkdir publish
-	tar -xf ryujinx-1.0.0-ldn2.5-linux_x64.tar.gz -C publish
+	tar -xf ryujinx-1.1.0-ldn3.0.1-linux_x64.tar.gz -C publish
 	if [ -f "/tmp/pineapple/publish/Ryujinx" ]; then
 		printf "Extraction successful!\n"
 		mkdir -p /home/${USER}/.local/share/Ryujinx_LDN
@@ -119,7 +119,7 @@ uninstall () {
 
 }
 printf "Welcome to PinEApple-Ryujinx LDN\n"
-printf "Latest LDN version is: 2.5\n"
+printf "Latest LDN version is: 3.0.1\n"
 printf "[1] Install it\n"
 printf "[2] Uninstall\n"
 printf "[3] Reinstall\Repair\n"
