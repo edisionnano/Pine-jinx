@@ -37,8 +37,7 @@ removealias() {
 install () {
 	printf "Downloading $version...\n"
 	curl -L "https://www.patreon.com/file?h=74910544&i=12353055" > ryujinx-1.1.0-ldn3.0.1-linux_x64.tar.gz
-	mkdir publish
-	tar -xf ryujinx-1.1.0-ldn3.0.1-linux_x64.tar.gz -C publish
+	tar -xf ryujinx-1.1.0-ldn3.0.1-linux_x64.tar.gz
 	if [ -f "/tmp/pineapple/publish/Ryujinx" ]; then
 		printf "Extraction successful!\n"
 		mkdir -p /home/${USER}/.local/share/Ryujinx_LDN
