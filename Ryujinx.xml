@@ -5,7 +5,7 @@
         <acronym>NRO</acronym>
         <icon name="Ryujinx"/>
         <glob pattern="*.nro"/>
-        <magic><match value="NRO" type="string" offset="16"/></magic>
+        <magic><match value="NRO0" type="string" offset="16"/></magic>
     </mime-type>
 
     <mime-type type="application/x-nx-nso">
@@ -13,7 +13,7 @@
         <acronym>NSO</acronym>
         <icon name="Ryujinx"/>
         <glob pattern="*.nso"/>
-        <magic><match value="NSO" type="string" offset="0"/></magic>
+        <magic><match value="NSO0" type="string" offset="0"/></magic>
     </mime-type>
     
     <mime-type type="application/x-nx-nsp">
@@ -21,7 +21,7 @@
         <acronym>NSP</acronym>
         <icon name="Ryujinx"/>
         <glob pattern="*.nsp"/>
-        <magic><match value="PFS" type="string" offset="0"/></magic>
+        <magic><match value="PFS0" type="string" offset="0"/></magic>
     </mime-type>
 
     <mime-type type="application/x-nx-xci">
@@ -29,5 +29,6 @@
         <acronym>XCI</acronym>
         <icon name="Ryujinx"/>
         <glob pattern="*.xci"/>
+        <magic><match value="HEAD" type="string" offset="4352"/></magic>
     </mime-type>
 </mime-info>

@@ -18,4 +18,4 @@ and hit enter
 ⚠️ The gamemode config used by Pinejinx supports the re-nice feature for some additional performance, to use it you must create a gamemode group using `sudo groupadd gamemode` and throw your user in using `sudo usermod -a -G gamemode $USER`<br>
 ⚠️ Regarding laptop users with NVIDIA GPUs, Ryujinx will have to merge the EGL pull request before Pinejinx can support you<br>
 
-Please come at Ryujinx's Discord server if you face any issues. We'll gladly support you at the #linux-master-race channel
+Please come at Ryujinx's Discord server if you face any issues. We'll gladly support you at the #linux-support channel
